@@ -6,10 +6,23 @@
 		<script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
 		<script type="text/javascript" src="js/jquery-ui-1.8.4.custom.min.js"></script>
 		<script type="text/javascript">
-            
+            $(document).ready(function() {
+                chrome.tabs.getAllInWindow(undefined, function(tabs) {
+                    for (var i = 0, tab; tab = tabs[i]; i++) {
+                        createTabWindow(tab);
+                    }
+                });
+            });
+
+            function createTabWindow(tab) {
+                // TODO: Figure out how to add this as an element to a table.
+                $('<div></div>').html(tab.title).dialog({title: tab.url});
+            }
         </script>
     </head>
     <body>
+        <table id="tab-table">
+        </table>
     </body>
 </html>
 
