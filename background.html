@@ -3,9 +3,11 @@
 </style>
 
 <script>
-var managerTab = "index.html";
+var managerTab = "manager.html";
 
 function openManagerTab() {
+    // Check all the tabs in this window to see if one of them is the manager page.
+    // If so, select it. If not, open the manager page.
     chrome.tabs.getAllInWindow(undefined, function(tabs) 
     {
         for (var i = 0, tab; tab = tabs[i]; i++)
